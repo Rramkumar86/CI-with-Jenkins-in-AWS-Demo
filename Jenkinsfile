@@ -17,5 +17,11 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        stage('Maven') {
+            steps {
+                echo 'Mvn Package....'
+                mvn package
+            }
+        }
     }
 }
