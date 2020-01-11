@@ -17,10 +17,5 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        stage('Maven') {
-            steps {
-                mvn package
-                    }
-            }
-        }
-    }
+     }
+  }
