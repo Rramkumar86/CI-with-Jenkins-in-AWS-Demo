@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Building..'
             }
-                steps {
+                step {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             post {
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
             }
-            steps {
+            step {
                 sh 'mvn package' 
             }
         }
