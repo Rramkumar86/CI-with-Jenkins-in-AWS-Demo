@@ -20,7 +20,7 @@ pipeline {
         stage('Maven') {
             steps {
                 mvn package
+                    }
             }
         }
     }
-}
