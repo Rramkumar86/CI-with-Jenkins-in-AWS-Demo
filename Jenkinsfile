@@ -17,6 +17,14 @@ pipeline {
             steps {
                 echo 'Building..'
             }
+                steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+                }
+            }
         }
         stage('Test') {
             steps {
@@ -26,6 +34,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+            }
+            steps {
+                sh 'mvn package' 
             }
         }
      }
