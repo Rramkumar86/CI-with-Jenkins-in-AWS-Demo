@@ -35,5 +35,15 @@ pipeline {
                 echo 'Deploying....'
                    }
         }
-     }
-  }
+stage('artifact upload') {
+rtUpload (
+    serverId: 'Artifactoryrepo',
+    spec: '''{
+          "files": [
+            {
+              "pattern": "/project/target/*.war",
+              "target": "generic-local"
+            }
+         ]
+    }'''
+     }}} 
