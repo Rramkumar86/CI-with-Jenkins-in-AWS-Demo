@@ -34,7 +34,6 @@ pipeline {
             steps {
                 echo 'Deploying....'
                    }
-        }
         stage('artifact upload') {
             steps{
            rtUpload (
@@ -49,6 +48,7 @@ pipeline {
              }'''
                )
      }
+        }
   }
  } 
 }
