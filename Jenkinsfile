@@ -38,6 +38,11 @@ pipeline {
         stage('artifact upload') {
             steps{
                 echo 'uploading artifact'
+rtBuildInfo (
+captureEnv: true, 
+buildName: 'my-build', 
+buildNumber: '1'
+)
            rtUpload (
               serverId: 'artifactoryrepo',
               spec: '''{
@@ -47,14 +52,18 @@ pipeline {
                          "target": "generic-local"
                       }
                  ]
-             }'''
-               )
-                rtMavenDeployer (
-                    id: 'deploy1',
-                    serverId: 'artifactoryrepo',
-                    releaseRepo: 'project/target/*.war',
-                    snapshotRepo: 'generic-local'
-                    )
+             }''', 
+               buildName:' my-build', 
+               buildNumber: '1'
+                  )
+                rtPromote (
+                   buildName:' my-build', 
+                   buildNumber: '1', 
+                   serverId: 'artifactoryrepo', 
+                   target Repo: 'generic-local', 
+                   sourceRepo: 'project/target/*.war',
+                   includeDependencies: true, 
+                   copy: true ) 
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
                     )
