@@ -62,6 +62,8 @@ pipeline {
   }
  } 
                 post{
+                    always {
                 build job: 'deploycd'
             }
+                }
 }
