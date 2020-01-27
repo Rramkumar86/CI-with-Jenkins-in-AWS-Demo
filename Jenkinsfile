@@ -56,9 +56,9 @@ pipeline {
                     snapshotRepo: 'generic-local'
                     )
                 rtMavenRun (
-                    pom: 'pom.xml',
                     goals: 'clean install',
                     deployerId: 'deploy1'
+                    mvn -e -X debug.log
                     )
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
