@@ -61,4 +61,11 @@ pipeline {
      }
   }
  } 
+    stage ('post build') {
+        steps{
+            post{
+                build job: 'deploycd'
+            }
+        }
+    }
 }
