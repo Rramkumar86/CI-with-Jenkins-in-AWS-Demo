@@ -57,6 +57,7 @@ buildNumber: '1'
                buildNumber: '1'
                   )
                rtMavenDeployer (
+tool: '3.6.0',
 id: 'deploy1', 
 serverId: 'artifactoryrepo', 
 releaseRepo: 'generic-local', 
