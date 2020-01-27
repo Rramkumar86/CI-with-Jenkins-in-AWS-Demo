@@ -57,13 +57,13 @@ buildNumber: '1'
                buildNumber: '1'
                   )
                rtMavenDeployer (
-tool: '3.6.0',
 id: 'deploy1', 
 serverId: 'artifactoryrepo', 
 releaseRepo: 'generic-local', 
 snapshotRepo: '/project/target/*.war'
 )
 rtMavenRun (
+tool: '3.6.0',
 pom: 'pom.xml',
 goals: 'clean install', 
 opts: '-Xms1024m - Xmx4096m', 
