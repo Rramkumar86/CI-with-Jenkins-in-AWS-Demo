@@ -49,6 +49,9 @@ pipeline {
                  ]
              }'''
                )
+                rtPublishBuildInfo (
+                    serverId: 'artifactoryrepo'
+                    )
      }
   }
  } 
