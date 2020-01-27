@@ -55,9 +55,6 @@ pipeline {
                     releaseRepo: 'project/target/*.war',
                     snapshotRepo: 'generic-local'
                     )
-                rtMavenRun (
-                    goals: 'clean install',
-                    deployerId: 'deploy1' )
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
                     )
