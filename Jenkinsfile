@@ -57,9 +57,8 @@ pipeline {
                     )
                 rtMavenRun (
                     goals: 'clean install',
-                    deployerId: 'deploy1'
-                   sh 'mvn -e -X debug.log'
-                    )
+                    deployerId: 'deploy1' , 
+                   sh 'mvn -e -X debug.log' )
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
                     )
