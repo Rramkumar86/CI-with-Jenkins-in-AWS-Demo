@@ -34,8 +34,10 @@ pipeline {
             steps {
                 echo 'Deploying....'
                    }
+        }
         stage('artifact upload') {
             steps{
+                echo 'uploading artifact'
            rtUpload (
               serverId: 'artifactoryrepo',
               spec: '''{
@@ -48,7 +50,6 @@ pipeline {
              }'''
                )
      }
-        }
   }
  } 
 }
