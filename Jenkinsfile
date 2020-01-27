@@ -49,6 +49,12 @@ pipeline {
                  ]
              }'''
                )
+                rtMavenDeployer (
+                    id: 'deploy1',
+                    serverId: 'artifactoryrepo',
+                    releaseRepo: 'project/target/*.war',
+                    snapshotRepo: 'generic-local'
+                    )
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
                     )
