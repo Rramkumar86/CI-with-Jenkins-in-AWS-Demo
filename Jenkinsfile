@@ -56,11 +56,19 @@ buildNumber: '1'
                buildName:' my-build', 
                buildNumber: '1'
                   )
-                rtPromote (
-                   buildName:' my-build', 
-                   buildNumber: '1', 
-                   serverId: 'artifactoryrepo', 
-                   targetRepo: 'generic-local' ) 
+               rtMavenDeployer (
+id: 'deploy1', 
+serverId: 'artifactoryrepo', 
+releaseRepo: 'generic-local', 
+snapshotRepo: '/project/target/*.war'
+)
+rtMavenRun (
+pom: 'pom.xml',
+goals: 'clean install', 
+opts: '-Xms1024m - Xmx4096m', 
+deployerId: 'deploy1', 
+buildName: 'my-build', 
+buildNumber: '1')
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
                     )
