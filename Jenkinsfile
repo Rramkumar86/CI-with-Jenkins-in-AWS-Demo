@@ -65,6 +65,7 @@ snapshotRepo: '/project/target/*.war'
 rtMavenRun (
 tool: '3.6.0',
 pom: 'pom.xml',
+goals: 'clean install', 
 deployerId: 'deploy1', 
 buildName: 'my-build', 
 buildNumber: '1')
