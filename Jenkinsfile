@@ -60,10 +60,7 @@ buildNumber: '1'
                    buildName:' my-build', 
                    buildNumber: '1', 
                    serverId: 'artifactoryrepo', 
-                   targetRepo: 'generic-local', 
-                   sourceRepo: 'project/target/*.war',
-                   includeDependencies: true, 
-                   copy: true ) 
+                   targetRepo: 'generic-local' ) 
                 rtPublishBuildInfo (
                     serverId: 'artifactoryrepo'
                     )
