@@ -60,7 +60,7 @@ buildNumber: '1'
                    buildName:' my-build', 
                    buildNumber: '1', 
                    serverId: 'artifactoryrepo', 
-                   target Repo: 'generic-local', 
+                   targetRepo: 'generic-local', 
                    sourceRepo: 'project/target/*.war',
                    includeDependencies: true, 
                    copy: true ) 
