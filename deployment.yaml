@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: webapp1
@@ -30,3 +30,4 @@ spec:
     nodePort: 30080
   selector:
     app: webapp1
+    type: LoanBalancer
