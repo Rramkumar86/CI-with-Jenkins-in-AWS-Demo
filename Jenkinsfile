@@ -25,7 +25,7 @@ pipeline {
             stage('building an image') {
                 steps {
                     script {
-                        def image1 = docker.build("rramkumar86/devops:${env.BUILD_ID}")
+                        def image1 = docker.build("rramkumar86/kubedemo:${env.BUILD_ID}")
                     }
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
             }
             stage('Deploy in K8') {
                 steps{
-                sh "sed -i 's/image1:latest/image1:${env.BUILD_ID}/g' deployment.yaml"
+                sh "sed -i 's/kubedemo:latest/kubedemo:${env.BUILD_ID}/g' deployment.yaml"
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
                }
             }    
