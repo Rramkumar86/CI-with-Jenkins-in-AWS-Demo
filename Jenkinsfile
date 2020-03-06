@@ -1,5 +1,11 @@
 pipeline {
     agent { dockerfile true }
+    environment {
+        PROJECT_ID = 'Kube-Demo'
+        CLUSTER_NAME = 'kubernetesdemo'
+        LOCATION = 'CLUSTER-LOCATION'
+        CREDENTIALS_ID = 'kubernetes'
+    }
     stages {
         stage('Test') {
             steps {
@@ -27,10 +33,16 @@ pipeline {
                 steps {
                     script {
                         docker.withRegistry('https://registry.hub.docker.com', 'docker') {
+                            image1.push("latest")
                             image1.push(${env.BUILD_ID}")
                                         }
-                                        }
-                                        }
-                                        }
+                    }
+                }
+            }
+            stage('Deploy in K8') {
+                steps{
+                sh "sed -i 's/image1:latest/image1:${env.BUILD_ID}/g' deployment.yaml"
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+            }                                
     }
 }
