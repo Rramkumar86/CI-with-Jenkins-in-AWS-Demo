@@ -42,7 +42,7 @@ pipeline {
             stage('Deploy in K8') {
                 steps{
                 sh "sed -i 's/kubedemo:latest/kubedemo:${env.BUILD_ID}/g' deployment.yaml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+                step([$class: 'KubernetesEngineBuilder', projectId: devops-test-262018, clusterName: kubernetesdemo, location: us-central1-c, manifestPattern: 'deployment.yaml', credentialsId: kubernetes, verifyDeployments: true])
                }
             }    
     }
