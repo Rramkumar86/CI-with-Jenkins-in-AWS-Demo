@@ -12,17 +12,17 @@ pipeline {
                 sh 'node --version'
             }
         }
-        stage('checkout scm') {
+        stage("checkout scm") {
             steps {
                 checkout scm
             }
-            stage('build') {
+            stage("build") {
                 steps {
                     echo 'mvn package'
                     sh 'mvn clean package'
                 }
             }
-            stage('building an image') {
+            stage("building an image") {
                 steps {
                     script {
                         def image1 = docker.build("rramkumar86/kubedemo:${env.BUILD_ID}")
