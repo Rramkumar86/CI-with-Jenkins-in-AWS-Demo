@@ -7,10 +7,11 @@ pipeline {
         CREDENTIALS_ID = 'kubernetes'
     }
     stages {
-        stage("checkout scm") {
+        stage("Checkout code") {
             steps {
                 checkout scm
             }
+        }
             stage("build") {
                 steps {
                     echo 'mvn package'
