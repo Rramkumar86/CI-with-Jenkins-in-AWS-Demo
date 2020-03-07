@@ -7,11 +7,6 @@ pipeline {
         CREDENTIALS_ID = 'kubernetes'
     }
     stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
         stage("checkout scm") {
             steps {
                 checkout scm
