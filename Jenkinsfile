@@ -1,9 +1,9 @@
 pipeline {
     agent { dockerfile true }
     environment {
-        PROJECT_ID = 'Kube-Demo'
+        PROJECT_ID = 'devops-test-262018'
         CLUSTER_NAME = 'kubernetesdemo'
-        LOCATION = 'CLUSTER-LOCATION'
+        LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'kubernetes'
     }
     stages {
