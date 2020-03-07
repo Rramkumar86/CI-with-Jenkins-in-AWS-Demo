@@ -1,5 +1,5 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
     environment {
         PROJECT_ID = 'devops-test-262018'
         CLUSTER_NAME = 'kubernetesdemo'
