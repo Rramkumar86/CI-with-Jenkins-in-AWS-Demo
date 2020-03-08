@@ -21,7 +21,7 @@ pipeline {
             stage("building an image") {
                 steps {
                     script {
-                        def image1 = docker.build("rramkumar86/kubedemo:${env.BUILD_ID}")
+                        myapp = docker.build("rramkumar86/kubedemo:${env.BUILD_ID}")
                     }
                 }
             }
@@ -29,8 +29,8 @@ pipeline {
                 steps {
                     script {
                         docker.withRegistry('https://registry.hub.docker.com', 'Docker') {
-                            image1.push("latest")
-                            image1.push("${env.BUILD_ID}")
+                            myapp.push("latest")
+                            myapp.push("${env.BUILD_ID}")
                                         }
                     }
                 }
