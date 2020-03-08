@@ -2,16 +2,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: webapp1
+  name: kubedemo
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: webapp1
+        app: kubedemo
     spec:
       containers:
-      - name: webapp1
+      - name: kubedemo
         image: rramkumar86/kubedemo:latest
         ports:
         - containerPort: 80
@@ -22,12 +22,12 @@ kind: Service
 metadata:
   name: webapp1-svc
   labels:
-    app: webapp1
+    app: kubedemo
 spec:
   type: NodePort
   ports:
   - port: 80
     target port: 8084
   selector:
-    app: webapp1
+    app: kubedemo
     type: LoanBalancer
